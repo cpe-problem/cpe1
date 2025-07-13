@@ -1,0 +1,21 @@
+//uva-10929
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    string s;
+    while(cin >> s)
+    {
+        int sum=0, sum1=0;
+        if(s[0]=='0') break;
+        for(int i=0;i<s.size();i++)
+        {
+            if(i%2==0)
+                sum+=(s[i]-'0');
+            else sum1+=(s[i]-'0');
+        }
+        if(abs(sum-sum1)==11 || abs(sum-sum1)==0) cout << s << " is a multiple of 11.\n";
+        else cout << s << " is not a multiple of 11.\n";
+    }
+}
