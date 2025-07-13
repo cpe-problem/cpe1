@@ -1,0 +1,40 @@
+//uva-100
+#include <bits/stdc++.h>
+using namespace std;
+
+int cycle(int n)
+{
+    int count=1;
+    while(n)
+    {
+        if(n==1) break;
+        else if(n%2==1)
+        {
+            n=3*n+1;
+            count++;
+        }
+        else
+        {
+            n/=2;
+            count++;
+        }
+    }
+    return count;
+}
+
+int main()
+{
+    int a, b;
+    while(cin >> a >> b)
+    {
+        int temp=0, num;
+        cout << a << " " << b << " ";
+        if(a>b) swap(a, b);
+        for(int i=a;i<=b;i++)
+        {
+            num=cycle(i);
+            temp=max(temp, num);
+        }
+        cout << temp << endl;
+    }
+}
