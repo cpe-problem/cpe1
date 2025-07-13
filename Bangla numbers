@@ -1,0 +1,57 @@
+//uva-10101
+#include <bits/stdc++.h>
+using namespace std;
+int kuti=10000000,lakh=100000,hajar=1000,shata=100;
+
+void bangla(int a)
+{
+    bool flag=true;
+    while(a)
+    {
+        if(!flag) cout << " ";
+        flag=false;
+        if(a>=kuti)
+        {
+            cout << a/kuti << " kuti";
+            a%=kuti;
+        }
+        else if(a>=lakh)
+        {
+            cout << a/lakh << " lakh";
+            a%=lakh;
+        }
+        else if(a>=hajar)
+        {
+            cout << a/hajar << " hajar";
+            a%=hajar;
+        }
+        else if(a>=shata)
+        {
+            cout << a/shata << " shata";
+            a%=shata;
+        }
+        else if(a>0)
+        {
+            cout << a;
+            a=a%a;        
+        }
+    }
+}
+
+int main()
+{
+    long long int num;
+    int t=1;
+    while(cin >> num)
+    {
+        cout << t++ << ". ";
+        if(num>=(kuti*100)) 
+        {
+            bangla((num/(kuti*100))*100);
+            cout << " ";
+        }
+        num=num%(kuti*100);
+        bangla(num);
+        cout << endl;
+    }
+}
