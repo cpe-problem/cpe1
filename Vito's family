@@ -1,0 +1,20 @@
+// uva-10041
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        int num;
+        cin >> num;
+        int x[num];
+        for(int i=0;i<num;i++) cin >> x[i];
+        sort(x, x+num);
+        int mid = x[num/2], sum=0;
+        for(int i=0;i<num;i++) sum+=abs(mid-x[i]);
+        cout << sum << endl;
+    }
+}
