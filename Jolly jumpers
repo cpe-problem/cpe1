@@ -1,0 +1,19 @@
+//uva-10038
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int num, n;
+    while(cin >> n)
+    {
+        int x[n], dif[n-1];
+        for(int i=0;i<n;i++) cin >> x[i];
+        for(int j=0;j<n-1;j++) dif[j]=abs(x[j]-x[j+1]);
+        sort(dif, dif+(n-1));
+        bool flag=true;
+        for(int i=0;i<n-1;i++) if(dif[i]!=i+1) flag=false;
+        if(flag) cout << "Jolly\n";
+        else cout << "Not jolly\n";
+    }
+}
