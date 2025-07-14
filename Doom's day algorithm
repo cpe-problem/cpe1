@@ -1,0 +1,19 @@
+//uva-12019
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        int a, b, sum=0;
+        cin >> a >> b;
+        string week[7]={"Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+        int day[12]={31,28,31,30,31,30,31,31,30,31,30,31};
+        for(int i=0;i<a-1;i++) sum=sum+day[i];
+        sum=sum+b;
+        cout << week[(sum-1)%7] << endl;
+    }
+}
