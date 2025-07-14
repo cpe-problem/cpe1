@@ -1,0 +1,26 @@
+//uva-00490
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    vector<string> line;
+    string s;
+	while(getline(cin, s))
+	    line.push_back(s);
+		
+	size_t maxlen=0;
+	for(auto &c:line) maxlen = max(maxlen, c.size());
+	int n=line.size();
+	for(int i=0;i<maxlen;i++)
+	{
+	    string row;
+	    for(int j=n-1;j>=0;j--)
+	    {
+	        if(i,line[j].size()) row.push_back(line[j][i]);
+	        else row.push_back(' ');
+	    }
+	    while(!row.empty()&&row.back()==' ') row.pop_back();
+	    cout << row << endl;
+	}
+}
