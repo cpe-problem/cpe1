@@ -1,0 +1,22 @@
+//uva-10268
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    while(cin >> t)
+    {
+        vector<int>x;
+        string s;
+        getline(cin, s);
+        getline(cin, s);
+        int num;
+        istringstream iss(s);
+        while(iss >> num) x.push_back(num);
+        int sum=0, n=x.size();
+        for(int i=0;i<n;i++)
+            sum+=x[i]*(n-i-1)*pow(t, n-i-2);
+        cout << sum << endl;
+    }
+}
