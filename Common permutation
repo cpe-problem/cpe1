@@ -1,0 +1,23 @@
+//uva-10252
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    string s, t;
+	while(getline(cin, s) && getline(cin, t))
+	{
+		int a[26]={0}, b[26]={0};
+		for(char c:s)
+		    if(c>='a' && c<='z') a[c-'a']++; 
+		for(char c:t)
+		    if(c>='a' && c<='z') b[c-'a']++; 
+		string x;
+		for(int i=0;i<26;i++)
+		{
+		    int times=min(a[i], b[i]);
+		    x.append(times, char('a'+i));
+		}
+		cout << x << endl;
+	}
+}
