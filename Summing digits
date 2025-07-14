@@ -1,0 +1,25 @@
+//uva-11332
+#include <bits/stdc++.h>
+using namespace std;
+
+int split(int a)
+{
+    int sum=0;
+    while(a)
+    {
+        sum+=a%10;
+        a/=10;
+    }
+    if(sum>=10) return split(sum);
+    else return sum;
+}
+
+int main()
+{
+	int a;
+	while(cin >> a, a)
+	{
+	    if(a>=10) cout << split(a) << endl;
+	    else cout << a << endl;
+	}
+}
