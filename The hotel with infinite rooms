@@ -1,0 +1,18 @@
+//uva-10170
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    long long int a, b;
+    while(cin >> a >> b)
+    {
+        long long int i=a, count=a;
+        while(count<b)
+        {
+            i++;
+            count+=i;
+        }
+        cout << i << endl;
+    }
+}
