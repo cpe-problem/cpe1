@@ -1,0 +1,20 @@
+//uva-10812
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        int a, b;
+        double x=0.0, y=0.0;
+        cin >> a >> b;
+        x=(a+b)/2;
+        y=(a-b)/2;
+        int n=(int)x+(int)y;
+        if(x>0 && y>0 && n==a) cout << x << " " << y << endl;
+        else cout << "impossible\n";
+    }
+}
