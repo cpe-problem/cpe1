@@ -1,0 +1,20 @@
+//uva-10420
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin >> t;
+    string s;
+    getline(cin, s);
+    map<string, int> mp;
+    while(t--)
+    {
+        getline(cin, s);
+        istringstream iss(s);
+        iss >> s;
+        mp[s]++;
+    }
+    for(auto i:mp) cout << i.first << " " << i.second << endl;
+}
