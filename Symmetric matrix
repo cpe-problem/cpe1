@@ -1,0 +1,33 @@
+//uva-11349
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t, count=1;
+    cin >> t;
+    while(t--)
+    {
+        char s;
+        int n;
+        cin >> s >> s >> n;
+        bool flag=true;
+        long long int x[n][n];
+        for(int i=0;i<n;i++)
+            for(int j=0;j<n;j++) cin >> x[i][j]; 
+        cout << "Test #" << count++ << ": ";
+        for(int i=0;i<=n/2;i++)
+        {
+            for(int j=0;j<n-i;j++)
+            {
+                if(x[i][j] != x[n-1-i][n-1-j])
+                {
+                    flag=false;
+                    break;  
+                }  
+            }
+        }
+        if(flag) cout << "Symmetric.\n";
+        else cout << "Non-symmetric.\n";
+    }
+}
