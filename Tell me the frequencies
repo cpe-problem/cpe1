@@ -1,0 +1,23 @@
+//uva-10062
+#include<iostream>
+using namespace std;
+int main()
+{
+    string s;
+    int i, j;
+    bool flag = false;
+    while(getline(cin,s)){
+
+        if(flag) cout << endl;
+
+        int count[128] = {0};
+        flag = true;
+
+        for(i = 0; i < s.length(); i++) count[s[i]]++;
+        for(i = 1; i <= s.length(); i++){  // the number of each ASCII
+            for(j = 127; j >= 32; j--){      // counter of ASCII
+                if(count[j] == i) cout << j << " " << i << endl;
+            }
+        }    
+    }
+}
