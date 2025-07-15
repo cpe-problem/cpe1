@@ -1,0 +1,44 @@
+//uva-11005
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n, cost[36], least[36];
+    cin >> n;
+    for(int i=1;i<=n;i++)
+    {
+        memset(cost, 0, sizeof cost);
+        if(i>1) cout << endl;
+        cout << "Case " << i << ":" << endl;
+        for(int j=0;j<36;j++) cin >> cost[j];
+        int t, num, cost1, flag, total;
+        cin >> t;
+        while(t--)
+        {
+            cin >> num;
+            cost1=INT_MAX;
+            flag=0;
+            for(int base=2;base<=36;base++)
+            {
+                total=0;
+                int temp=num;
+                while(temp)
+                {
+                    total+=cost[temp%base];
+                    temp/=base;
+                }
+                if(total<cost1)
+                {
+                    cost1=total;
+                    flag=1;
+                    least[0]=base;
+                }
+                else if(total==cost1) least[flag++]=base;
+            }
+            cout << "Cheapest base(s) for number " << num << ":";
+            for(int i=0;i<flag;i++) cout << " " << least[i];
+            cout << endl;
+        }
+    }
+}
