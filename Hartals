@@ -1,0 +1,35 @@
+//uva-10050
+#include <bits/stdc++.h>
+using namespace std;
+
+int hartal(int num2, int *x, int num)
+{
+    int count=0;
+    for(int i=num2;i<num+1;i=i+num2)
+    {
+        if(i%7==6 || i%7==0) x[i]=0;
+        else x[i]=1;
+    }
+    for(int i=1;i<num+1;i++) if(x[i]) count++;
+    return count;
+}
+
+int main()
+{
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        int num, n, num2, sum=0, m=0;
+        cin >> num >> n;
+        int x[num+1];
+        for(int i=1;i<num+1;i++) x[i]=0;
+        while(n--)
+        {
+            cin >> num2;
+            sum=hartal(num2, x, num);
+            m=max(m,sum);
+        }
+        cout << m << endl;
+    }
+}
