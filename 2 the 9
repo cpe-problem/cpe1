@@ -1,0 +1,41 @@
+//uva-10922
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+    char c[1000];
+    while(1)
+    {
+        cin >> c;
+        if(c[0] == '0') break;
+        int len = strlen(c), sum = 0, degree = 0;
+        for(int i = 0; i < len; i++) sum = sum + (c[i] - '0');
+        if(sum%9 == 0)
+        {
+            for(int i = 0; i < len; i++) cout << c[i];
+            degree = degree+1;
+            while(sum >= 10)
+            {
+                int n = 0;
+                while(sum)
+                {
+                    n = n + sum%10;
+                    sum /= 10;
+                }
+                if(n%9 == 0)
+                {
+                    degree++;
+                    sum = n;
+                }
+            }
+            cout <<  " is a multiple of 9 and has 9-degree " << degree << ".\n";
+        }
+        else
+        {
+            for(int j = 0; j < strlen(c); j++) cout << c[j] - '0';
+            cout << " is not a multiple of 9.\n";
+        }  
+    }
+}
