@@ -1,0 +1,20 @@
+//uva-10057
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    int n;
+    while(cin >> n,n)
+    {
+        int x[n];
+        for(int i = 0; i < n ; i++) cin >> x[i];
+        sort(x, x+n);
+        int mid1 = x[(n-1)/2],mid2 = x[n / 2],result = 0;
+        for(int j = 0; j < n; j++)
+        {
+            if(x[j] == mid1 || x[j] == mid2) result++;
+        if(n%2 == 1) cout << mid1 << " " << result << " " << "1" << endl;
+        else cout << mid1 << " " << result << " " << mid2 - mid1 + 1 << endl;
+    }
+}
