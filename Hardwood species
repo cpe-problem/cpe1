@@ -1,0 +1,30 @@
+//uva-10226
+#include <iostream>
+#include <map>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n; //不會換行
+    string s;
+    getline(cin, s); //讀換行
+    getline(cin, s);
+    while(n--)
+    {
+        map<string, int> list;
+        int sum=0;
+        while(getline(cin, s) && s != "")
+        {
+            list[s]++;
+            sum++;
+        }
+        for (auto i: list){
+            cout << i.first << " " <<
+            fixed << setprecision(4) << (double)i.second / sum*100 << endl;
+        }
+        cout << endl;
+    }
+}
