@@ -1,0 +1,65 @@
+//uva-10908
+#include <iostream>
+using namespace std;
+
+int largest(char x[][101], int column, int row, int r, int c)
+{
+    int len=1;
+    while(1)
+    {
+        int up, low, left, right;
+        up=r-len;
+        low=c-len;
+        left=r+len;
+        right=c+len;
+
+        if( r - len < 0 || r+len>=column || c-len<0 || c+len>=row) 
+            return 2*len-1;
+
+        for(int i=up;i<=(r+len);i+=len*2)
+        {
+            for(int j=low;j<=right;j++)
+            {
+                if(x[i][j]!=x[r][c]) 
+                    return 2*len-1;
+            }
+        }
+
+        for(int i=low;i<=(c+len);i+=len*2)
+        {
+            for(int j=up;j<=left;j++)
+            {
+                if(x[j][i]!=x[r][c]) 
+                    return 2*len-1;
+            }
+        }
+        len += 1;
+    }
+    return 2*len-1;
+}
+
+int main()
+{
+    int t, row, column, l;
+    cin >> t;
+    while(t--)
+    {
+        cin >> column >> row >> l;
+        char x[101][101]={0};
+        for(int i=0;i<column;i++)
+        {
+            for(int j=0;j<row;j++)
+            {
+                cin >> x[i][j];
+            }
+        }
+        int r, c;
+        cout << column << " " << row << " " << l << endl;
+        while(l--)
+        {
+            cin >> r >> c;
+            cout << largest(x, column, row, r, c) << endl;
+        } 
+    }
+
+}
