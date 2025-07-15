@@ -1,0 +1,38 @@
+//uva-10235
+#include <iostream>
+
+using namespace std;
+
+bool isprime(int number)
+{
+    for(int i=2; i*i<=number; i++)
+    {
+        if (number % i == 0)
+            return false;
+    }
+    return true;
+}
+
+int main()
+{
+    int N;
+    while(cin >> N)
+    {
+        if(N == 0) break;
+        int y = 0, temp = N;
+        bool flag = isprime(N);
+        while(N)
+        {
+            y = y*10;
+            y = y + N%10;
+            N = N/10;
+        }
+        bool flag2 = isprime(y);
+        if(flag == true && flag2 == true)
+            cout << temp << " is emirp." << endl;
+        else if((flag == true && flag2 == false) || (flag == false && flag2 == true))
+            cout << temp << " is prime." << endl;
+        else
+            cout << temp << " is not prime" << endl;
+    }
+}
