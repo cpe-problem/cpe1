@@ -1,0 +1,21 @@
+//uva-11417
+#include <bits/stdc++.h>
+using namespace std;
+
+int gcd(int value1, int value2)
+{
+    while((value1%=value2)&&(value2%=value1));
+    return value1+value2;
+}
+
+int main()
+{
+    int num;
+    while(cin >> num, num)
+    {
+        int g=0;
+        for(int i=1;i<num;i++)
+            for(int j=i+1;j<=num;j++) g+=gcd(i, j);
+        cout << g << endl;
+    }
+}
