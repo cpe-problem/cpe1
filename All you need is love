@@ -1,0 +1,26 @@
+//uva-10193
+#include <iostream> 
+using namespace std;
+int gcd(int a, int b)
+{
+    while((a%=b) && (b%=a));
+    return a+b;
+}
+int main()
+{
+    int n, pair=1;
+    cin >> n;
+    while(n--)
+    {
+        string s1, s2;
+        int s=0, l=0;
+        cin >> s1 >> s2;
+        for(int i=0;i<s1.length();i++) s = 2*s + s1[i] - '0';
+        for(int i=0;i<s2.length();i++) l = 2*l + s2[i] - '0';
+        
+        cout << "Pair #" << pair++ <<": ";
+        if(gcd(s, l)>1) cout << "All you need is love!\n";
+        else cout << "Love is not all you need!\n";
+    }
+
+}
