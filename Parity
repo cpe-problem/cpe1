@@ -1,0 +1,19 @@
+//uva-10931
+#include <bits/stdc++.h>
+using namespace std;
+
+string toBinary(int n) {
+  string r;
+  while (n != 0) {
+    r += (n % 2 == 0 ? "0" : "1");
+    n /= 2;
+  }
+  return r;
+}
+
+int main()
+{
+    int num;
+    while(cin >> num, num)
+        cout << "The parity of " << toBinary(num) << " is " << __builtin_popcount(num) << " (mod 2)."<< endl;
+}
