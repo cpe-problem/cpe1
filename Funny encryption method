@@ -1,0 +1,22 @@
+//uva-10019
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin >> t;
+    while(t--)
+    {
+       int num, sum=0, count=0;
+       cin >> num;
+       cout << __builtin_popcount(num) << " "; // 內建位元計數，速度比 bitset 快很多
+       while(num)
+       {
+           sum+=(num%10)*pow(16, count);
+           num/=10;
+           count++;
+       }
+       cout << __builtin_popcount(sum) << endl;
+    }
+}
