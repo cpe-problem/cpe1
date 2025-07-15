@@ -1,0 +1,29 @@
+//uva-948
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int fib[40]={0,1};
+    for(int i=2;i<40;i++) fib[i]=fib[i-1]+fib[i-2];
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        int num;
+        cin >> num;
+        cout << num << " = ";
+        bool flag =false;
+        for(int k=39;k>=2;k--)
+        {
+            if(num>=fib[k])
+            {
+                cout << "1";
+                num -= fib[k];
+                flag=true;
+            }
+            else if(flag) cout << "0";
+        }
+        cout << " (fib)" << endl;
+    }
+}
