@@ -1,0 +1,40 @@
+//uva-10190
+#include <iostream>
+using namespace std;
+
+int sequence(int a, int b, int *array)
+{
+    int i = 1;
+    array[0] = a;
+    if(array[0] == 0 || b == 0)
+    {
+        cout << "boring\n";
+        return 0;
+    }
+    while(a > 1)
+    {
+        if(a % b != 0)
+        {
+            cout << "boring\n";
+            break;
+        }
+        a = a / b;
+        array[i] = a;
+        i++;
+    }
+    cout << array[0] << " ";
+    for(int j = 1; j < i-1; j++)
+    {
+    cout << array[j] << " ";
+            
+    }
+    cout << "1\n";
+    return 1;
+}
+
+int main()
+{
+    int a, b, x[200];
+    while(cin >> a >> b, a+b)
+        int result =  sequence(a, b, x);
+}
