@@ -1,0 +1,20 @@
+//uva-10221
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    double r=6440.0, s, a, arc=0.0, chord=0.0;
+    string command;
+    while(cin >> s >> a >> command)
+    {
+        if(command == "min") a/= 60;
+        if(a > 180.0) a = 360-a;
+        arc = 2.0*M_PI*(r+s)*(a/360);
+        chord = 2.0*(r+s)*cos((90 - a / 2) / 180 * M_PI);
+        cout << fixed << setprecision(6) << arc << " " << chord << endl;
+    }
+}
