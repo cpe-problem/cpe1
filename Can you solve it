@@ -1,0 +1,22 @@
+//uva-10642
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+ll idx(ll x, ll y) {
+    ll s = x + y;
+    // 三角數 (0+1+...+s) = s*(s+1)/2，加上 x 即為該點的線性序號
+    return s * (s + 1) / 2 + x;
+}
+
+int main(){
+    int T;
+    cin >> T;              
+    for(int tc = 1; tc <= T; tc++){
+        ll x0, y0, x1, y1;
+        cin >> x0 >> y0 >> x1 >> y1;
+        // 來源與目的地的編號差即為所需步數
+        ll steps = llabs(idx(x1, y1) - idx(x0, y0));
+        cout << "Case " << tc << ": " << steps << "\n";
+    }
+}
