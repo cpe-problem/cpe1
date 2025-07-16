@@ -1,0 +1,77 @@
+//uva-118
+#include <bits/stdc++.h>
+using namespace std;
+
+// 四個方向：N=0, E=1, S=2, W=3
+const int dx[4] = {0, 1, 0, -1};
+const int dy[4] = {1, 0, -1, 0};
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int maxX, maxY;
+    // 讀入地圖右上角座標
+    cin >> maxX >> maxY;
+    // 用 set 存放已經掉落的「scent」格子 (x,y,direction)
+    set<tuple<int,int,int>> scent;
+
+    string line;
+    // 讀至 EOF
+    while (cin >> ws && !cin.eof()) {
+        int x, y;
+        char dirChar;
+        string commands;
+        // 讀取機器人初始狀態
+        if (!(cin >> x >> y >> dirChar)) break;
+        getline(cin, commands);           // 讀到行尾空白
+        getline(cin, commands);           // 讀取指令串
+        
+        int dir;
+        switch (dirChar) {
+            case 'N': dir = 0; break;
+            case 'E': dir = 1; break;
+            case 'S': dir = 2; break;
+            case 'W': dir = 3; break;
+            default: dir = 0;
+        }
+
+        bool lost = false;
+        for (char c : commands) {
+            if (lost) break;  // 已經掉落就不再執行
+
+            if (c == 'L') {
+                dir = (dir + 3) % 4;   // 左轉 90 度
+            }
+            else if (c == 'R') {
+                dir = (dir + 1) % 4;   // 右轉 90 度
+            }
+            else if (c == 'F') {
+                int nx = x + dx[dir];
+                int ny = y + dy[dir];
+                // 如果要前進會掉出邊界
+                if (nx < 0 || nx > maxX || ny < 0 || ny > maxY) {
+                    // 若先前已有 scent，則忽略此指令
+                    if (scent.count({x, y, dir})) {
+                        continue;
+                    } else {
+                        // 設置 scent，並標記機器人 Lost
+                        scent.insert({x, y, dir});
+                        lost = true;
+                    }
+                } else {
+                    // 正常移動
+                    x = nx; y = ny;
+                }
+            }
+        }
+
+        // 輸出結果
+        cout << x << " " << y << " ";
+        cout << "NESW"[dir];
+        if (lost) cout << " LOST";
+        cout << "\n";
+    }
+
+    return 0;
+}
