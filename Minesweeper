@@ -1,0 +1,39 @@
+//uva-10189
+#include <bits/stdc++.h>
+using namespace std;
+
+int x[8]={-1, -1, -1, 0, 0, 1, 1, 1};
+int y[8]={-1, 0, 1, -1, 1, -1, 0, 1};
+
+int main()
+{
+    int n, m, no=1;
+    while(cin >> n >> m)
+    {
+        if(!(n+m)) break;
+        vector<string>s(n);
+        for(int i=0;i<n;i++) cin >> s[i];
+        vector<string>s1=s;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(s1[i][j]=='*') s[i][j]='*';
+                else
+                {
+                    int count=0;
+                    for(int k=0;k<8;k++)
+                    {
+                        int di=i+x[k];
+                        int dj=j+y[k];
+                        if(di>=0&&di<n&&dj>=0&&dj<n&&s[di][dj]=='*') count++; 
+                    }
+                    s1[i][j]=char('0'+count);
+                }
+            }
+        }
+        if(no>1) cout << endl;
+        cout << "Field #" << no++ << ":\n";
+        for(int i=0;i<n;i++) cout << s1[i] << endl;
+    }
+}
